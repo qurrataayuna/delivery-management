@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navigations from "../components/navigations";
-import SideBar from "../components/side-bar";
+import SideBar from "../components/sidebar";
 import { fetchDrivers } from "../redux/drivers/actions";
 import { selectDrivers } from "../redux/drivers/selectors";
 
