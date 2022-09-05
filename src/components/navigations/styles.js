@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 
 export const wrapper = css`
-  margin: 16px;
+  margin: 24px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;

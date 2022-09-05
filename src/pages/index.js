@@ -1,22 +1,34 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Navigations from "../components/navigations";
+import SideBar from "../components/side-bar";
+import { fetchDrivers } from "../redux/drivers/actions";
+import { selectDrivers } from "../redux/drivers/selectors";
 
 const Home = () => {
-  const [data, setData] = useState(null);
+  const dispatch = useDispatch();
+  const drivers = useSelector(selectDrivers);
 
+  console.log(drivers);
   useEffect(() => {
-    axios
-      .get("https://randomuser.me/api/?results=30")
-      .then((resp) => setData(resp.data));
-  }, []);
-
-  console.log(data);
+    axios.get("https://randomuser.me/api/?results=30").then((resp) =>
+      dispatch(
+        fetchDrivers({
+          payload: resp.data,
+        })
+      )
+    );
+  }, [dispatch]);
 
   return (
     <div>
       <Navigations />
-      <p>Hello World</p>
+
+      <div>
+        <SideBar />
+        <p>Hello World</p>
+      </div>
     </div>
   );
 };
