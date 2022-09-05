@@ -1,8 +1,10 @@
 import { css } from "@emotion/react";
 
 export const wrapper = css`
-  margin: 16px 0;
-  padding: 0px;
+  width: 25%;
+  height: 100%;
+  padding: 16px 0;
+  background: #fff;
 `;
 
 export const menuItem = css`

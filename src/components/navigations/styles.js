@@ -1,14 +1,14 @@
 import { css } from "@emotion/react";
 
 export const wrapper = css`
-  margin: 24px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 36px;
+  background: #fff;
 `;
 
 export const logo = css`
+  margin: 30px;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -24,6 +24,7 @@ export const logo = css`
 `;
 
 export const identity = css`
+  margin: 30px;
   font-size: 14px;
   display: flex;
   align-items: center;

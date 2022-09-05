@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import DriversManagementContents from "../components/driverManagementContents";
 import Navigations from "../components/navigations";
 import SideBar from "../components/sidebar";
 import { fetchDrivers } from "../redux/drivers/actions";
@@ -22,12 +23,18 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div style={{ height: "100%" }}>
       <Navigations />
 
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          height: "100%",
+        }}
+      >
         <SideBar />
-        <p>Hello World</p>
+        <DriversManagementContents />
       </div>
     </div>
   );
