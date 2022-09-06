@@ -92,6 +92,10 @@ export const pagination = css`
     display: flex;
     align-items: center;
     justify-content: start;
+
+    &.disabled {
+      color: #939393;
+    }
   }
 
   img {

@@ -3,11 +3,12 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPaginations } from "../../redux/drivers/actions";
-import { selectPage, selectStartIndex } from "../../redux/drivers/selectors";
+import { selectStartIndex } from "../../redux/drivers/selectors";
 
 const DriverList = ({ data }) => {
   const dispatch = useDispatch();
   const startIndex = useSelector(selectStartIndex);
+  const [displayedData, setDisplayedData] = useState([]);
 
   useEffect(() => {
     if (data) {
@@ -22,7 +23,13 @@ const DriverList = ({ data }) => {
         })
       );
     }
-  }, [data]);
+  }, [data, dispatch]);
+
+  useEffect(() => {
+    if (data) {
+      setDisplayedData(data.slice(startIndex, startIndex + 5));
+    }
+  }, [data, startIndex]);
 
   const renderDataItem = (label, value) => {
     return (
@@ -39,7 +46,7 @@ const DriverList = ({ data }) => {
 
   return (
     <div css={listWrapper}>
-      {data.slice(startIndex, startIndex + 5).map((item) => {
+      {displayedData.map((item) => {
         const {
           dob: { date },
         } = item;

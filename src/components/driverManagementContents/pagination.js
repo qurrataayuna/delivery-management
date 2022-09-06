@@ -1,3 +1,4 @@
+import { cx } from "@emotion/css";
 import { useDispatch, useSelector } from "react-redux";
 import { setPaginations } from "../../redux/drivers/actions";
 import { selectPage, selectTotalPage } from "../../redux/drivers/selectors";
@@ -7,28 +8,46 @@ const Pagination = () => {
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
   const totalPage = useSelector(selectTotalPage);
+  const isFirstPage = page === 1;
+  const isLastPage = page === totalPage;
 
   const handlePage = (newPage) => {
-    console.log("start at", 5 * (page - 1));
+    if (newPage === 0 || newPage === totalPage + 1) {
+      return null;
+    }
+
     dispatch(
       setPaginations({
         page: newPage,
         totalPage,
-        startIdx: 5 * (page - 1),
+        startIdx: 5 * (newPage - 1),
       })
     );
   };
 
   return (
     <div css={pagination}>
-      <div onClick={() => handlePage(page - 1)}>
-        <img src="./arrow-grey.png" alt="left" />
+      <div
+        onClick={() => handlePage(page - 1)}
+        className={cx({ disabled: isFirstPage })}
+      >
+        <img
+          src={isFirstPage ? "./arrow-grey.png" : "./arrow-black.png"}
+          alt="left"
+        />
         <p>Previous Page</p>
       </div>
 
-      <div onClick={() => handlePage(page + 1)}>
+      <div
+        onClick={() => handlePage(page + 1)}
+        className={cx({ disabled: isLastPage })}
+      >
         <p>Next Page</p>
-        <img className="right-arrow" src="./arrow-black.png" alt="right" />
+        <img
+          className="right-arrow"
+          src={isLastPage ? "./arrow-grey.png" : "./arrow-black.png"}
+          alt="right"
+        />
       </div>
     </div>
   );
