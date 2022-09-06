@@ -1,7 +1,29 @@
 import { itemWrapper, listWrapper, dataItem } from "./styles";
 import moment from "moment";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setPaginations } from "../../redux/drivers/actions";
+import { selectPage, selectStartIndex } from "../../redux/drivers/selectors";
 
 const DriverList = ({ data }) => {
+  const dispatch = useDispatch();
+  const startIndex = useSelector(selectStartIndex);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(
+        setPaginations({
+          page: 1,
+          totalPage:
+            data.length % 5 === 0
+              ? data.length / 5
+              : Math.abs(data.length / 5) + 1,
+          startIdx: 0,
+        })
+      );
+    }
+  }, [data]);
+
   const renderDataItem = (label, value) => {
     return (
       <div css={dataItem}>
@@ -17,7 +39,7 @@ const DriverList = ({ data }) => {
 
   return (
     <div css={listWrapper}>
-      {data.map((item) => {
+      {data.slice(startIndex, startIndex + 5).map((item) => {
         const {
           dob: { date },
         } = item;
