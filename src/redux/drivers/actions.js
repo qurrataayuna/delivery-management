@@ -1,5 +1,5 @@
-export const fetchDrivers = ({ payload }) => ({
-  type: "FETCH_DRIVER_DATA",
+export const setDisplayData = ({ payload }) => ({
+  type: "SET_DRIVER_DATA",
   payload,
 });
 

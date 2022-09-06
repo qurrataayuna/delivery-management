@@ -1,5 +1,5 @@
 const initialState = {
-  data: undefined,
+  data: [],
   error: null,
   page: 1,
   totalPage: 1,
@@ -8,7 +8,7 @@ const initialState = {
 
 const drivers = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_DRIVER_DATA":
+    case "SET_DRIVER_DATA":
       return {
         ...state,
         data: action.payload,

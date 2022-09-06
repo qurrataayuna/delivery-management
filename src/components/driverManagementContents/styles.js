@@ -26,8 +26,16 @@ export const header = css`
     background-color: #ed4a41;
     color: #fff;
     border: 0;
+    border-radius: 2px;
     padding: 8px;
     font-weight: 400;
+  }
+
+  input {
+    padding: 7px;
+    margin-right: 8px;
+    border: 0.5px solid #b5b5b5;
+    border-radius: 2px;
   }
 `;
 

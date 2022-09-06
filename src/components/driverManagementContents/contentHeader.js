@@ -9,6 +9,7 @@ const ContentHeader = () => {
       </div>
 
       <div>
+        <input type="text" placeholder="Cari driver" />
         <button>TAMBAH DRIVER</button>
       </div>
     </div>

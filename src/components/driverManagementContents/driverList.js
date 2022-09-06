@@ -2,13 +2,20 @@ import { itemWrapper, listWrapper, dataItem } from "./styles";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPaginations } from "../../redux/drivers/actions";
-import { selectStartIndex } from "../../redux/drivers/selectors";
+import { setDisplayData, setPaginations } from "../../redux/drivers/actions";
+import {
+  selectDisplayedData,
+  selectStartIndex,
+} from "../../redux/drivers/selectors";
 
 const DriverList = ({ data }) => {
   const dispatch = useDispatch();
   const startIndex = useSelector(selectStartIndex);
-  const [displayedData, setDisplayedData] = useState([]);
+  const displayedData = useSelector(selectDisplayedData);
+
+  const testSearch = data?.filter((item) => item.name.first.includes("Brato"));
+
+  console.log(testSearch);
 
   useEffect(() => {
     if (data) {
@@ -27,9 +34,11 @@ const DriverList = ({ data }) => {
 
   useEffect(() => {
     if (data) {
-      setDisplayedData(data.slice(startIndex, startIndex + 5));
+      dispatch(
+        setDisplayData({ payload: data.slice(startIndex, startIndex + 5) })
+      );
     }
-  }, [data, startIndex]);
+  }, [data, dispatch, startIndex]);
 
   const renderDataItem = (label, value) => {
     return (
