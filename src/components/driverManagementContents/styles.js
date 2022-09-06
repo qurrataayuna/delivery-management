@@ -63,7 +63,7 @@ export const itemWrapper = css`
     }
   }
 
-  img {
+  .user {
     width: 100px;
     border-radius: 50%;
     padding: 20px 10px;
@@ -78,5 +78,27 @@ export const dataItem = css`
   .label {
     font-size: 10px;
     color: #808080;
+  }
+`;
+
+export const pagination = css`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 100px;
+  font-size: 14px;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  img {
+    width: 16px;
+
+    &.right-arrow {
+      transform: rotate(180deg);
+    }
   }
 `;

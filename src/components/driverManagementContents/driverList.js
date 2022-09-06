@@ -34,7 +34,7 @@ const DriverList = ({ data }) => {
               <img src="/more.png" alt="more-btn" />
             </div>
 
-            <img src={item.picture.large} alt="img" />
+            <img className="user" src={item.picture.large} alt="img" />
 
             {renderDataItem(
               "Nama Driver",

@@ -1,6 +1,8 @@
 const initialState = {
   data: undefined,
   error: null,
+  page: 1,
+  totalPage: 1,
 };
 
 const drivers = (state = initialState, action) => {
