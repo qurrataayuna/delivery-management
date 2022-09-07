@@ -36,6 +36,7 @@ export const header = css`
     margin-right: 8px;
     border: 0.5px solid #b5b5b5;
     border-radius: 2px;
+    width: 250px;
   }
 `;
 

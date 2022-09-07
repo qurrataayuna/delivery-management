@@ -44,7 +44,7 @@ const ContentHeader = () => {
       <div>
         <input
           type="text"
-          placeholder="Cari driver"
+          placeholder="Cari driver (enter untuk mencari)"
           onKeyDown={(e) => handleSearchQuery(e)}
         />
         <button>TAMBAH DRIVER</button>
