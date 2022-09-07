@@ -5,6 +5,10 @@ export const wrapper = css`
   height: 100%;
   padding: 16px 0;
   background: #fff;
+
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const menuItem = css`

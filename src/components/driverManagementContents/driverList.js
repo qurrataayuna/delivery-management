@@ -7,6 +7,7 @@ import {
   selectDisplayedData,
   selectStartIndex,
 } from "../../redux/drivers/selectors";
+import { cx } from "@emotion/css";
 
 const DriverList = ({ data }) => {
   const dispatch = useDispatch();
@@ -36,9 +37,9 @@ const DriverList = ({ data }) => {
     }
   }, [data, dispatch, startIndex]);
 
-  const renderDataItem = (label, value) => {
+  const renderDataItem = (label, value, isMandatory) => {
     return (
-      <div css={dataItem}>
+      <div css={dataItem} className={cx({ hidden: !isMandatory })}>
         <p className="label">{label}</p>
         <p>{value}</p>
       </div>
@@ -68,15 +69,20 @@ const DriverList = ({ data }) => {
               <img src="/more.png" alt="more-btn" />
             </div>
 
-            <img className="user" src={item.picture.large} alt="img" />
+            <div className="content">
+              <img className="user" src={item.picture.large} alt="img" />
 
-            {renderDataItem(
-              "Nama Driver",
-              `${item.name.first}, ${item.name.last}`
-            )}
-            {renderDataItem("Telepon", item.phone)}
-            {renderDataItem("Email", item.email)}
-            {renderDataItem("Tanggal Lahir", displayDob)}
+              <div>
+                {renderDataItem(
+                  "Nama Driver",
+                  `${item.name.first}, ${item.name.last}`,
+                  true
+                )}
+                {renderDataItem("Telepon", item.phone, true)}
+                {renderDataItem("Email", item.email, false)}
+                {renderDataItem("Tanggal Lahir", displayDob, false)}
+              </div>
+            </div>
           </div>
         );
       })}

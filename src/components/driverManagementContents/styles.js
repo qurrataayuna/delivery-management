@@ -2,6 +2,10 @@ import { css } from "@emotion/react";
 
 export const wrapper = css`
   width: 80%;
+
+  @media only screen and (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 export const header = css`
@@ -38,6 +42,21 @@ export const header = css`
     border-radius: 2px;
     width: 250px;
   }
+
+  @media only screen and (max-width: 820px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+
+    input {
+      margin-bottom: 8px;
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
 `;
 
 export const listWrapper = css`
@@ -46,6 +65,11 @@ export const listWrapper = css`
   justify-content: start;
   align-items: center;
   overflow: scroll;
+
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
 `;
 
 export const itemWrapper = css`
@@ -77,6 +101,18 @@ export const itemWrapper = css`
     border-radius: 50%;
     padding: 20px 10px;
   }
+
+  @media only screen and (max-width: 800px) {
+    margin-bottom: 16px;
+    width: 100%;
+    margin-right: 0;
+
+    .content {
+      display: flex;
+      align-items: flex-start;
+      justify-content: start;
+    }
+  }
 `;
 
 export const dataItem = css`
@@ -87,6 +123,13 @@ export const dataItem = css`
   .label {
     font-size: 10px;
     color: #808080;
+  }
+
+  @media only screen and (max-width: 800px) {
+    padding: 2px 10px;
+    &.hidden {
+      display: none;
+    }
   }
 `;
 
@@ -113,5 +156,9 @@ export const pagination = css`
     &.right-arrow {
       transform: rotate(180deg);
     }
+  }
+
+  @media only screen and (max-width: 800px) {
+    margin: 8px 50px;
   }
 `;

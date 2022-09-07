@@ -5,6 +5,10 @@ export const wrapper = css`
   justify-content: space-between;
   align-items: center;
   background: #fff;
+
+  @media only screen and (max-width: 800px) {
+    height: 50px;
+  }
 `;
 
 export const logo = css`
@@ -20,6 +24,15 @@ export const logo = css`
     height: 30px;
     width: auto;
     padding-right: 4px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    font-size: 24px;
+    margin: 16px;
+
+    img {
+      height: 26px;
+    }
   }
 `;
 
@@ -37,5 +50,11 @@ export const identity = css`
   img {
     width: 30px;
     padding-left: 4px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    span {
+      display: none;
+    }
   }
 `;
