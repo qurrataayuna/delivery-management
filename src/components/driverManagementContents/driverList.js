@@ -1,6 +1,6 @@
 import { itemWrapper, listWrapper, dataItem } from "./styles";
 import moment from "moment";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setDisplayData, setPaginations } from "../../redux/drivers/actions";
 import {
@@ -12,10 +12,6 @@ const DriverList = ({ data }) => {
   const dispatch = useDispatch();
   const startIndex = useSelector(selectStartIndex);
   const displayedData = useSelector(selectDisplayedData);
-
-  const testSearch = data?.filter((item) => item.name.first.includes("Brato"));
-
-  console.log(testSearch);
 
   useEffect(() => {
     if (data) {
